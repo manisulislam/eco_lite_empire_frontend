@@ -42,6 +42,13 @@ const Header = () => {
             >
               Contact
             </NavLink>
+            <NavLink
+              to="/blog"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              
+            >
+              Blog
+            </NavLink>
           </div>
         </div>
         <div className="flex items-center">

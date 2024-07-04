@@ -1,3 +1,4 @@
+import AllProductSection from "../AllProductSection/AllProductSection"
 import CategorySection from "../CategorySection/CategorySection"
 import HeroSection from "../HeroSection/HeroSection"
 
@@ -7,6 +8,7 @@ function Home() {
     <>
       <HeroSection/>
       <CategorySection/>
+      <AllProductSection/>
     </>
     
   )
