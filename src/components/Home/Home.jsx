@@ -1,9 +1,14 @@
+import CategorySection from "../CategorySection/CategorySection"
 import HeroSection from "../HeroSection/HeroSection"
 
 
 function Home() {
   return (
-    <HeroSection/>
+    <>
+      <HeroSection/>
+      <CategorySection/>
+    </>
+    
   )
 }
 
