@@ -2,6 +2,7 @@
 // api---http://127.0.0.1:8000/api/products/
 import { useState, useEffect } from "react"
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const AllProductSection = () => {
     const [allProducts, setAllProducts]=useState([]);
@@ -29,9 +30,11 @@ const AllProductSection = () => {
             />
             <h4 className="text-xl font-semibold mb-2">{product.name}</h4>
             <p className="text-lg text-gray-700 mb-2">Price: ${product.price} TK</p>
+            <Link to={`/products/${product.id}`}>
             <button className="mt-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
               Buy Now
             </button>
+            </Link>
           </div>
         ))}
       </div>

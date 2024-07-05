@@ -8,6 +8,8 @@ import Home from './components/Home/Home'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 import Blog from './components/Blog/Blog'
+import ProductDetail from './components/AllProductSection/ProductDetail'
+import BlogDetail from './components/Blog/BlogDetail'
 
 const router=createBrowserRouter([
   {
@@ -17,6 +19,10 @@ const router=createBrowserRouter([
       {
         path:"",
         element:<Home/>
+      },
+      {
+        path:"products/:id",
+        element:<ProductDetail/>
       },
       {
         path:"about",
@@ -29,7 +35,16 @@ const router=createBrowserRouter([
       {
         path:"blog",
         element:<Blog/>
-      }
+      },
+      {
+        path:"blog/:id",
+        element:<BlogDetail/>
+      },
+      {
+        path:"*",
+        element:<h1>Error 404</h1>
+      },
+     
     ]
   }
 ])
