@@ -10,6 +10,9 @@ import Contact from './components/Contact/Contact'
 import Blog from './components/Blog/Blog'
 import ProductDetail from './components/AllProductSection/ProductDetail'
 import BlogDetail from './components/Blog/BlogDetail'
+import Register from './components/Register/Register'
+import SignIn from './components/SignIn/SignIn'
+import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 
 const router=createBrowserRouter([
   {
@@ -39,6 +42,19 @@ const router=createBrowserRouter([
       {
         path:"blog/:id",
         element:<BlogDetail/>
+      },
+      {
+        path:"register",
+        element:<Register/>
+      }
+      ,
+      {
+        path:"sign_in",
+        element:<SignIn/>
+      },
+      {
+        path:"forgot_password",
+        element:<ForgotPassword/>
       },
       {
         path:"*",

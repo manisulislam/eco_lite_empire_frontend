@@ -13,17 +13,35 @@ const Header = () => {
             </Link>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+
+
+          <div className="flex justify-center p-4">
+            <form  className="w-full max-w-lg flex">
+              <input
+                type="text"
+                className="w-full p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Search..."
+              />
+              <button
+                type="submit"
+                className="p-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              >
+                Search
+              </button>
+            </form>
+         </div>
+
             <NavLink
               
               to="/"
-              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium"
               
             >
               Home
             </NavLink>
             <NavLink
               to="/about"
-              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium"
               
             >
               About
@@ -37,14 +55,14 @@ const Header = () => {
             </NavLink> */}
             <NavLink
               to="/contact"
-              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
               
             >
               Contact
             </NavLink>
             <NavLink
               to="/blog"
-              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
               
             >
               Blog
@@ -52,8 +70,21 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <div className="flex-shrink-0">
-            <img className="h-8 w-8 rounded-full" src="user-avatar.jpg" alt="User Avatar" />
+          <div className="flex-shrink-0 ">
+          <NavLink
+              to="/sign_in"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 mr-2  text-sm font-medium"
+              
+            >
+              Sign In
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
+              
+            >
+              Register
+            </NavLink>
           </div>
         </div>
       </div>
