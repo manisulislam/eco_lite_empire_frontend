@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Register = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    phoneNumber: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    re_password: ''
   });
 
   const handleChange = (e) => {
@@ -19,11 +18,11 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add form validation logic here
-    if (formData.password !== formData.confirmPassword) {
+    if (formData.password !== formData.re_password) {
       alert("Passwords do not match");
       return;
     }
-    
+    // Add form submission logic here
   };
 
   return (
@@ -32,25 +31,25 @@ const Register = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">First Name</label>
             <input
               type="text"
-              name="fullName"
-              id="fullName"
+              name="first_name"
+              id="first_name"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.fullName}
+              value={formData.first_name}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">Phone Number</label>
+            <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">Last Name</label>
             <input
-              type="tel"
-              name="phoneNumber"
-              id="phoneNumber"
+              type="text"
+              name="last_name"
+              id="last_name"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.phoneNumber}
+              value={formData.last_name}
               onChange={handleChange}
               required
             />
@@ -80,19 +79,19 @@ const Register = () => {
             />
           </div>
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <label htmlFor="re_password" className="block text-sm font-medium text-gray-700">Confirm Password</label>
             <input
               type="password"
-              name="confirmPassword"
-              id="confirmPassword"
+              name="re_password"
+              id="re_password"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.confirmPassword}
+              value={formData.re_password}
               onChange={handleChange}
               required
             />
           </div>
           <hr />
-          <p>Already have an account. Please <Link to='/sign_in'><span className='text-green-500'>Sign In</span></Link></p>
+          <p>Already have an account? Please <Link to='/sign_in'><span className='text-green-500'>Sign In</span></Link></p>
           <button
             type="submit"
             className="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
