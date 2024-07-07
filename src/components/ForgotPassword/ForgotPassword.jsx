@@ -3,8 +3,7 @@ import 'tailwindcss/tailwind.css';
 
 const ForgotPassword = () => {
   const [formData, setFormData] = useState({
-    newPassword: '',
-    confirmNewPassword: ''
+    email: '',
   });
 
   const handleChange = (e) => {
@@ -15,10 +14,7 @@ const ForgotPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add form validation logic here
-    if (formData.newPassword !== formData.confirmNewPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+    console.log(formData);
     
   };
 
@@ -28,29 +24,18 @@ const ForgotPassword = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">Reset Password</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">New Password</label>
+            <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">Email</label>
             <input
-              type="password"
-              name="newPassword"
-              id="newPassword"
+              type="email"
+              name="email"
+              id="email"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.newPassword}
+              value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
-          <div>
-            <label htmlFor="confirmNewPassword" className="block text-sm font-medium text-gray-700">Confirm New Password</label>
-            <input
-              type="password"
-              name="confirmNewPassword"
-              id="confirmNewPassword"
-              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.confirmNewPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          
           <button
             type="submit"
             className="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"

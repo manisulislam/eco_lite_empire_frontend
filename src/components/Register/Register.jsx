@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {register} from '../../features/auth/authSlice'
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,20 +12,36 @@ const Register = () => {
     re_password: ''
   });
 
+  const dispatch=useDispatch()
+  const {user,isError,isSuccess,isLoading, message}=useSelector((state)=>state.auth)
+
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const {first_name,last_name,email,password,re_password}=formData
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add form validation logic here
     if (formData.password !== formData.re_password) {
       alert("Passwords do not match");
-      return;
+      
+    }
+    else{
+      const userData={
+        first_name,
+        last_name,
+        email,
+        password
+      }
+      dispatch(register(userData))
+      }
     }
     // Add form submission logic here
-  };
+ 
 
   return (
     <div className="flex justify-center items-center bg-gray-100">
@@ -37,7 +55,7 @@ const Register = () => {
               name="first_name"
               id="first_name"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.first_name}
+              value={first_name}
               onChange={handleChange}
               required
             />
@@ -49,7 +67,7 @@ const Register = () => {
               name="last_name"
               id="last_name"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.last_name}
+              value={last_name}
               onChange={handleChange}
               required
             />
@@ -61,7 +79,7 @@ const Register = () => {
               name="email"
               id="email"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.email}
+              value={email}
               onChange={handleChange}
               required
             />
@@ -73,7 +91,7 @@ const Register = () => {
               name="password"
               id="password"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.password}
+              value={password}
               onChange={handleChange}
               required
             />
@@ -85,7 +103,7 @@ const Register = () => {
               name="re_password"
               id="re_password"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-1"
-              value={formData.re_password}
+              value={re_password}
               onChange={handleChange}
               required
             />
