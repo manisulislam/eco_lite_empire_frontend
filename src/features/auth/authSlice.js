@@ -133,6 +133,51 @@ export const authSlice = createSlice({
         .addCase(logout.fulfilled, (state)=>{
             state.user=null
         })
+        .addCase(activate.pending, (state)=>{
+            state.isLoading=true
+        })
+        .addCase(activate.fulfilled, (state, action)=>{
+            state.isLoading=false
+            state.isSuccess=true
+            state.user=action.payload
+        })
+        .addCase(activate.rejected, (state, action)=>{
+            state.isLoading=false
+            state.isError=true
+            state.message=action.payload
+            state.user=null
+           
+        })
+        .addCase(resetPassword.pending, (state)=>{
+            state.isLoading=true
+        })
+        .addCase(resetPassword.fulfilled, (state)=>{
+            state.isLoading=false
+            state.isSuccess=true
+            
+        })
+        .addCase(resetPassword.rejected, (state, action)=>{
+            state.isLoading=false
+            state.isError=true
+            state.message=action.payload
+            state.user=null
+           
+        })
+        .addCase(resetPasswordConfirm.pending, (state)=>{
+            state.isLoading=true
+        })
+        .addCase(resetPasswordConfirm.fulfilled, (state)=>{
+            state.isLoading=false
+            state.isSuccess=true
+            
+        })
+        .addCase(resetPasswordConfirm.rejected, (state, action)=>{
+            state.isLoading=false
+            state.isError=true
+            state.message=action.payload
+            state.user=null
+           
+        })
        
     }
 })

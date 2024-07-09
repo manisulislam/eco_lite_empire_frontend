@@ -17,6 +17,7 @@ import ActivateAccount from './components/ActivateAccount/ActivateAccount'
 
 import { Provider } from 'react-redux'
 import {store} from './app/store'
+import NotFound from './components/NotFound/NotFound'
 
 const router=createBrowserRouter([
   {
@@ -67,7 +68,7 @@ const router=createBrowserRouter([
       ,
       {
         path:"*",
-        element:<h1>Error 404</h1>
+        element:<NotFound/>
       },
      
     ]
