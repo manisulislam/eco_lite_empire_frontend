@@ -59,7 +59,33 @@ export const activate=createAsyncThunk(
     }
 )
 
+// reset password
+export const resetPassword=createAsyncThunk(
+    "auth/resetPassword",
+    async(userData,thunkAPI)=>{
+        try {
+            return authService.resetPassword(userData)
+        } catch (error) {
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message)
+        }
+       
+    }
+)
 
+// reset password confirm
+export const resetPasswordConfirm=createAsyncThunk(
+    "auth/resetPasswordConfirm",
+    async(userData,thunkAPI)=>{
+        try {
+            return authService.resetPasswordConfirm(userData)
+        } catch (error) {
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message)
+        }
+       
+    }
+)
 export const authSlice = createSlice({
     name:'auth',
     initialState,

@@ -61,7 +61,7 @@ const router=createBrowserRouter([
         element:<ForgotPassword/>
       },
       {
-        path:"activate_account",
+        path:"activate/:uid/:token",
         element:<ActivateAccount/>
       }
       ,

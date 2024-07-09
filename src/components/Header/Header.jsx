@@ -1,7 +1,22 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo.jpeg'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout, reset} from "../../features/auth/authSlice"
 
 const Header = () => {
+
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+
+  const {user}=useSelector((state)=>state.auth)
+
+  const handleLogOut=()=>{
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
+
   return (
     <header className="bg-white shadow">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +86,28 @@ const Header = () => {
         </div>
         <div className="flex items-center">
           <div className="flex-shrink-0 ">
-          <NavLink
+          {user ? 
+              <>
+              <NavLink
+              to="/"
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
+              
+            >
+              Dashboard
+            </NavLink>
+            <NavLink
+              to="/"
+              onClick={handleLogOut}
+              className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
+              
+            >
+              Logout
+            </NavLink>
+              </>
+            
+          :
+            <>
+            <NavLink
               to="/sign_in"
               className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 mr-2  text-sm font-medium"
               
@@ -85,6 +121,12 @@ const Header = () => {
             >
               Register
             </NavLink>
+            
+            </>
+          }
+          
+            
+
           </div>
         </div>
       </div>

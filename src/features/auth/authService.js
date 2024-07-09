@@ -54,16 +54,35 @@ const activate= async (userData)=>{
         }
     }
     const response= await axios.post(ACTIVATE_URL,userData,config)
-    if(response.data){
-        localStorage.setItem('user', JSON.stringify(response.data))
+    return response.data
+    
+}
+// reset password
+const resetPassword= async (userData)=>{
+    console.log(userData)
+    const config={
+        headers:{
+            'Content-Type':'application/json'
+        }
     }
+    const response= await axios.post(RESET_PASSWORD_URL,userData,config)
     return response.data
     
 }
 
+// reset confirmed password
+const resetPasswordConfirm= async (userData)=>{
+    console.log(userData)
+    const config={
+        headers:{
+            'Content-Type':'application/json'
+        }
+    }
+    const response= await axios.post(RESET_PASSWORD_CONFIRM_URL,userData,config)
+    return response.data
+    
+}
 
-// reset password
-
-const authService={register,login,logout,activate}
+const authService={register,login,logout,activate,resetPassword,resetPasswordConfirm}
 
 export default authService
