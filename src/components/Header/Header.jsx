@@ -89,14 +89,14 @@ const Header = () => {
           {user ? 
               <>
               <NavLink
-              to="/"
+              to="/dashboard"
               className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
               
             >
               Dashboard
             </NavLink>
             <NavLink
-              to="/"
+              to="dashboard/"
               onClick={handleLogOut}
               className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
               

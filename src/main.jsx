@@ -18,6 +18,10 @@ import ActivateAccount from './components/ActivateAccount/ActivateAccount'
 import { Provider } from 'react-redux'
 import {store} from './app/store'
 import NotFound from './components/NotFound/NotFound'
+import DashboardLayout from './components/Dashboard/DashboardLayout'
+import DashboardHome from './components/Dashboard/DashboardHome'
+import Profile from './components/Dashboard/Profile'
+import Settings from './components/Dashboard/Settings'
 
 const router=createBrowserRouter([
   {
@@ -71,8 +75,29 @@ const router=createBrowserRouter([
         element:<NotFound/>
       },
      
+    ],
+    
+  }
+  ,
+  {
+    path:"dashboard",
+    element:<DashboardLayout/>,
+    children:[
+      {
+        path:"",
+        element:<DashboardHome/>
+      },
+      {
+        path:"profile",
+        element:<Profile/>
+      },
+      {
+        path:"settings",
+        element:<Settings/>
+      }
     ]
   }
+
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
