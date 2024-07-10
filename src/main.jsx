@@ -22,6 +22,7 @@ import DashboardLayout from './components/Dashboard/DashboardLayout'
 import DashboardHome from './components/Dashboard/DashboardHome'
 import Profile from './components/Dashboard/Profile'
 import Settings from './components/Dashboard/Settings'
+import ResetPasswordConfirm from './components/ForgotPassword/ResetPasswordConfirm'
 
 const router=createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router=createBrowserRouter([
       {
         path:"forgot_password",
         element:<ForgotPassword/>
+      },
+      {
+        path:"password/reset/confirm/:uid/:token",
+        element:<ResetPasswordConfirm/>
       },
       {
         path:"activate/:uid/:token",
