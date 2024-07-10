@@ -9,6 +9,7 @@ const ACTIVATE_URL=`${BACKEND_DOMAIN}/api/v1/auth/users/activation/`
 const LOGIN_URL=`${BACKEND_DOMAIN}/api/v1/auth/jwt/create/`
 const RESET_PASSWORD_URL=`${BACKEND_DOMAIN}/api/v1/auth/users/reset_password/`
 const RESET_PASSWORD_CONFIRM_URL=`${BACKEND_DOMAIN}/api/v1/auth/users/reset_password_confirm/`
+const GET_USER=`${BACKEND_DOMAIN}/api/v1/auth/users/me/`
 
 
 // register user
@@ -33,8 +34,10 @@ const login= async (userData)=>{
         }
     }
     const response= await axios.post(LOGIN_URL,userData,config)
+    console.log(response.data)
     if(response.data){
         localStorage.setItem('user', JSON.stringify(response.data))
+
     }
     return response.data
     
@@ -83,6 +86,20 @@ const resetPasswordConfirm= async (userData)=>{
     
 }
 
-const authService={register,login,logout,activate,resetPassword,resetPasswordConfirm}
+// get user info
+const getUserInfo= async (accessToken)=>{
+    
+    const config={
+        headers:{
+            'Authorization': `Bearer ${accessToken}`,
+            
+        }
+    }
+    const response= await axios.get(GET_USER,config)
+    return response.data
+    
+}
+
+const authService={register,login,logout,activate,resetPassword,resetPasswordConfirm,getUserInfo}
 
 export default authService

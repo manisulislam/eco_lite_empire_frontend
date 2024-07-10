@@ -5,6 +5,7 @@ const user=JSON.parse(localStorage.getItem('user'))
 
 const initialState ={
     user: user ? user : null,
+    userInfo: {},
     isError:false,
     isSuccess:false,
     isLoading:false,
@@ -86,6 +87,22 @@ export const resetPasswordConfirm=createAsyncThunk(
        
     }
 )
+
+
+//get user info
+export const getUserInfo=createAsyncThunk(
+    "auth/getUserInfo",
+    async( _ , thunkAPI )=>{
+        try {
+            const accessToken=thunkAPI.getState().auth.user.access;
+            return await authService.getUserInfo(accessToken)
+        } catch (error) {
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message)
+        }
+       
+    }
+)
 export const authSlice = createSlice({
     name:'auth',
     initialState,
@@ -110,6 +127,7 @@ export const authSlice = createSlice({
         })
         .addCase(register.rejected, (state, action)=>{
             state.isLoading=false
+            state.isSuccess=false
             state.isError=true
             state.message=action.payload
             state.user=null
@@ -125,6 +143,7 @@ export const authSlice = createSlice({
         })
         .addCase(login.rejected, (state, action)=>{
             state.isLoading=false
+            state.isSuccess=false
             state.isError=true
             state.message=action.payload
             state.user=null
@@ -143,6 +162,7 @@ export const authSlice = createSlice({
         })
         .addCase(activate.rejected, (state, action)=>{
             state.isLoading=false
+            state.isSuccess=false
             state.isError=true
             state.message=action.payload
             state.user=null
@@ -158,6 +178,7 @@ export const authSlice = createSlice({
         })
         .addCase(resetPassword.rejected, (state, action)=>{
             state.isLoading=false
+            state.isSuccess=false
             state.isError=true
             state.message=action.payload
             state.user=null
@@ -173,11 +194,16 @@ export const authSlice = createSlice({
         })
         .addCase(resetPasswordConfirm.rejected, (state, action)=>{
             state.isLoading=false
+            state.isSuccess=false
             state.isError=true
             state.message=action.payload
             state.user=null
            
         })
+        .addCase(getUserInfo.fulfilled, (state, action) => {
+            state.userInfo = action.payload
+        })
+        
        
     }
 })

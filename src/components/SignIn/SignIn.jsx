@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import {login,reset} from '../../features/auth/authSlice'
+import {login,reset, getUserInfo} from '../../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 
@@ -40,7 +40,10 @@ const SignIn = () => {
         navigate('/')
         alert("successfully log in.")
       }
+      
       dispatch(reset())
+      dispatch(getUserInfo())
+      
     },[isError, isSuccess,user,message, dispatch,navigate])
   
 

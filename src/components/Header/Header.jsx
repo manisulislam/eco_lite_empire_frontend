@@ -96,7 +96,7 @@ const Header = () => {
               Dashboard
             </NavLink>
             <NavLink
-              to="dashboard/"
+              to="/"
               onClick={handleLogOut}
               className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
               
