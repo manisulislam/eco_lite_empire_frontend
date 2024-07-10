@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {login,reset, getUserInfo} from '../../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
+import Swal from 'sweetalert2';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -34,11 +35,22 @@ const SignIn = () => {
     
     useEffect(()=>{
       if(isError){
-        console.log(message)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message || 'Something went wrong!',
+        });
       }
       if(isSuccess || user){
         navigate('/')
-        alert("successfully log in.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Login successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+       
       }
       
       dispatch(reset())

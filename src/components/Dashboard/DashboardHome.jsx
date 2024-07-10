@@ -1,13 +1,16 @@
-
+import { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { getUserInfo } from '../../features/auth/authSlice';
 
 
 const DashboardHome = () => {
   const dispatch=useDispatch();
-  dispatch(getUserInfo())
-
+  
   const {userInfo}=useSelector((state)=>state.auth)
+
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
   console.log(userInfo)
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">

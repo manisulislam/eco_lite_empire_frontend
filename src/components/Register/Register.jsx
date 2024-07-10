@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {register,reset} from '../../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
@@ -32,7 +33,12 @@ const Register = () => {
     e.preventDefault();
     // Add form validation logic here
     if (formData.password !== formData.re_password) {
-      alert("Passwords do not match");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Passwords do not match",
+      });
+      
       
     }
     else{
@@ -56,7 +62,14 @@ const Register = () => {
       }
       if(isSuccess || user){
         navigate('/')
-        alert("an email was sent to active your account")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Congratulation. An email was sent to active your account',
+          showConfirmButton: false,
+          timer: 3000
+        })
+       
       }
       dispatch(reset())
     },[isError, isSuccess,user,message, dispatch,navigate])

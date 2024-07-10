@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {activate,reset} from '../../features/auth/authSlice'
 import Spinner from '../Spinner/Spinner';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
+
+
 const ActivateAccount = () => {
 
   const {uid, token}=useParams()
@@ -25,7 +28,11 @@ const ActivateAccount = () => {
       
     useEffect(()=>{
       if(isError){
-        console.log(message)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message || 'Something went wrong!',
+        });
       }
       if(isSuccess ){
         navigate('/sign_in')
