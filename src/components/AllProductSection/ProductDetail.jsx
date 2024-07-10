@@ -1,6 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { addToCart } from "../../features/cart/cartSlice";
+import Swal from 'sweetalert2';
+import Spinner from "../Spinner/Spinner";
+
+
 
 // API endpoint example: http://127.0.0.1:8000/api/products/1/
 
@@ -10,6 +16,7 @@ const ProductDetail = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const dispatch= useDispatch()
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/products/${id}/`)
             .then(res => {
@@ -22,8 +29,22 @@ const ProductDetail = () => {
             });
     }, [id]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Spinner/>
     if (error) return <div>Error: {error.message}</div>;
+
+    const handleAddToCart = (product) => {
+        // Add product to cart
+        console.log("add to cart clicked")
+        dispatch(addToCart(product))
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Add to cart successfully',
+            showConfirmButton: false,
+            timer: 2500
+          })
+
+    }
 
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
@@ -48,7 +69,7 @@ const ProductDetail = () => {
                         defaultValue="1"
                         className="w-16 p-2 border rounded-lg"
                     />
-                    <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Add to Cart</button>
+                    <button onClick={()=> handleAddToCart(product)} className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Add to Cart</button>
                     <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">Buy Now</button>
                 </div>
             </div>

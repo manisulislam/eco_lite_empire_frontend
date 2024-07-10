@@ -31,9 +31,11 @@ const AllProductSection = () => {
             <h4 className="text-xl font-semibold mb-2">{product.name}</h4>
             <p className="text-lg text-gray-700 mb-2">Price: ${product.price} TK</p>
             <Link to={`/products/${product.id}`}>
+            <div className="mt-10">
             <button className="mt-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-              Buy Now
+              View Details
             </button>
+            </div>
             </Link>
           </div>
         ))}

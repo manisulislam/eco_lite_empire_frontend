@@ -23,6 +23,7 @@ import DashboardHome from './components/Dashboard/DashboardHome'
 import Profile from './components/Dashboard/Profile'
 import Settings from './components/Dashboard/Settings'
 import ResetPasswordConfirm from './components/ForgotPassword/ResetPasswordConfirm'
+import Cart from './components/Cart/Cart'
 
 const router=createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router=createBrowserRouter([
       {
         path:"activate/:uid/:token",
         element:<ActivateAccount/>
+      },
+      {
+        path:'cart',
+        element:<Cart/>
       }
       ,
       {

@@ -3,6 +3,7 @@ import logo from '../../assets/images/logo.jpeg'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout, reset} from "../../features/auth/authSlice"
+import { BsCart3 } from "react-icons/bs";
 
 const Header = () => {
 
@@ -88,6 +89,15 @@ const Header = () => {
           <div className="flex-shrink-0 ">
           {user ? 
               <>
+              
+              <NavLink
+              to="/cart"
+              className="text-black-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
+              
+            >
+               <BsCart3 />
+             
+            </NavLink>
               <NavLink
               to="/dashboard"
               className="text-green-500 hover:text-gray-700 inline-flex items-center px-1 pt-1  text-sm font-medium"
@@ -103,6 +113,7 @@ const Header = () => {
             >
               Logout
             </NavLink>
+
               </>
             
           :
