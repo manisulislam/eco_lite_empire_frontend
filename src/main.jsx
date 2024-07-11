@@ -24,6 +24,8 @@ import Profile from './components/Dashboard/Profile'
 import Settings from './components/Dashboard/Settings'
 import ResetPasswordConfirm from './components/ForgotPassword/ResetPasswordConfirm'
 import Cart from './components/Cart/Cart'
+import Testimonials from './components/Testimonials/Testimonials'
+import AllProductSection from './components/AllProductSection/AllProductSection'
 
 const router=createBrowserRouter([
   {
@@ -34,6 +36,11 @@ const router=createBrowserRouter([
         path:"",
         element:<Home/>
       },
+      {
+        path:"all_product",
+        element:<AllProductSection/>
+      }
+      ,
       {
         path:"products/:id",
         element:<ProductDetail/>
@@ -78,6 +85,10 @@ const router=createBrowserRouter([
       {
         path:'cart',
         element:<Cart/>
+      },
+      {
+        path:"testimonials",
+        element:<Testimonials/>
       }
       ,
       {

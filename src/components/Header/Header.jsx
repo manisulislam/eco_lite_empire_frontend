@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout, reset} from "../../features/auth/authSlice"
 import { BsCart3 } from "react-icons/bs";
+import DiscountOffer from '../DiscountOffer/DiscountOffer';
 
 const Header = () => {
 
@@ -19,6 +20,9 @@ const Header = () => {
   }
 
   return (
+
+    <>
+    <DiscountOffer/>
     <header className="bg-white shadow">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between h-16">
@@ -143,6 +147,7 @@ const Header = () => {
       </div>
     </div>
   </header>
+    </>
 );
 };
   

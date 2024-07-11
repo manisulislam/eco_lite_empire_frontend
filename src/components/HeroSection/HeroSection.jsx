@@ -10,7 +10,8 @@ const HeroSection = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 100,
+        speed: 500,
+        autoplay: true,
         slidesToShow: 1,
         slidesToScroll: 1,
       };
