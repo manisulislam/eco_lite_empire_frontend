@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from "../../features/cart/cartSlice";
 import Swal from 'sweetalert2';
 import Spinner from "../Spinner/Spinner";
+import Review from "../Review/Review";
 
 
 
@@ -53,6 +54,7 @@ const ProductDetail = () => {
 
 
     return (
+        <>
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
         <div className="flex">
             <div className="w-1/2">
@@ -80,9 +82,24 @@ const ProductDetail = () => {
                     
                     
                 </div>
+                <div>
+                
             </div>
         </div>
-    </div>
+        </div>
+        <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
+        {product.reviews.map((review) => (
+          <div key={review.id} className="bg-white p-6 rounded-lg shadow-md">
+            <p className="text-lg font-semibold">{review.user}</p>
+            <p className="text-gray-600">Rating: {review.rating}</p>
+            <p className="text-gray-800">{review.comment}</p>
+            <p className="text-sm text-gray-400">{new Date(review.created_at).toLocaleString()}</p>
+          </div>
+        ))}
+                </div>
+                <Review productId={product.id} />
+        </>
+        
     );
 };
 

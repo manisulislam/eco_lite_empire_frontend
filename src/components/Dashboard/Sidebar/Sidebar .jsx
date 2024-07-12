@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faCog } from '@fortawesome/free-solid-svg-icons';
+import { MdOutlineRateReview } from "react-icons/md";
+import { FaJediOrder } from "react-icons/fa6";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
@@ -26,6 +28,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <Link to="/dashboard/profile" className="flex items-center text-gray-800 text-lg font-semibold hover:text-gray-600 transition-colors duration-200" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faUser} className="mr-3" />
                 Profile
+              </Link>
+            </li>
+            <li className="mt-4">
+              <Link to="/dashboard/order_history" className="flex items-center text-gray-800 text-lg font-semibold hover:text-gray-600 transition-colors duration-200" onClick={toggleSidebar}>
+              <FaJediOrder className="mr-3"  />
+               Order History
+              </Link>
+            </li>
+            <li className="mt-4">
+              <Link to="/dashboard/my_review" className="flex items-center text-gray-800 text-lg font-semibold hover:text-gray-600 transition-colors duration-200" onClick={toggleSidebar}>
+              <MdOutlineRateReview className="mr-3" />
+                My Review
               </Link>
             </li>
             <li className="mt-4">

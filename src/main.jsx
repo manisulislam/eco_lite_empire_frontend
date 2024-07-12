@@ -30,6 +30,8 @@ import Payment from './components/Payment/Payment'
 import PaymentSuccess from './components/PaymentSuccess/PaymentSuccess'
 import PaymentFail from './components/PaymentFail/PaymentFail'
 import PaymentCancel from './components/PaymentCancel/PaymentCancel'
+import OrderHistory from './components/Dashboard/OrderHistory'
+import MyReview from './components/Dashboard/MyReview'
 
 const router=createBrowserRouter([
   {
@@ -135,6 +137,14 @@ const router=createBrowserRouter([
       {
         path:"profile",
         element:<Profile/>
+      },
+      {
+        path:"order_history",
+        element:<OrderHistory/>
+      },
+      {
+        path:"my_review",
+        element:<MyReview/>
       },
       {
         path:"settings",
