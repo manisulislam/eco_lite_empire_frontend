@@ -1,9 +1,13 @@
 
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 const CheckoutPage = () => {
   const location = useLocation();
+  const navigate=useNavigate()
   const product = location.state?.product;
+  
  
   const [formData, setFormData] = useState({
     name: '',
@@ -11,7 +15,7 @@ const CheckoutPage = () => {
     address: '',
     city: '',
     state: '',
-    zipCode: '',
+    zip_code: '',
     
   });
 
@@ -23,10 +27,22 @@ const CheckoutPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleShipping = (e) => {
     e.preventDefault();
     // Implement form submission logic here
-    console.log('Form data submitted:', formData);
+    axios.post('http://127.0.0.1:8000/api/sslcommerz/shipping/', formData)
+    .then(response => {
+        console.log('Shipping Info submitted', response.data);
+        navigate('/payment')
+        
+       
+
+    })
+    .catch(error => {
+        console.error('There was an error submitting the form!', error);
+    });
+
+
   };
 
 
@@ -54,9 +70,9 @@ const CheckoutPage = () => {
                 </div>
               </div>
             )}
-            <form onSubmit={handleSubmit} className="divide-y divide-gray-200">
+            <form  className="divide-y divide-gray-200">
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                {['name', 'email', 'address', 'city', 'state', 'zipCode'].map((field) => (
+                {['name', 'email', 'address', 'city', 'state', 'zip_code'].map((field) => (
                   <div key={field} className="flex flex-col">
                     <label className="leading-loose capitalize">{field.replace(/([A-Z])/g, ' $1')}</label>
                     <input
@@ -71,7 +87,7 @@ const CheckoutPage = () => {
                 ))}
                 <div >
                   <Link to="/payment" className="pt-4 flex items-center space-x-4">
-                  <button type="submit" className="flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none bg-gradient-to-r from-teal-400 to-blue-500 hover:from-teal-500 hover:to-blue-600">
+                  <button type="button" onClick={handleShipping} className="flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none bg-gradient-to-r from-teal-400 to-blue-500 hover:from-teal-500 hover:to-blue-600">
                     Proceed to Payment
                   </button>
                   </Link>
