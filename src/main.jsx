@@ -14,7 +14,6 @@ import Register from './components/Register/Register'
 import SignIn from './components/SignIn/SignIn'
 import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 import ActivateAccount from './components/ActivateAccount/ActivateAccount'
-
 import { Provider } from 'react-redux'
 import {store} from './app/store'
 import NotFound from './components/NotFound/NotFound'
@@ -26,6 +25,11 @@ import ResetPasswordConfirm from './components/ForgotPassword/ResetPasswordConfi
 import Cart from './components/Cart/Cart'
 import Testimonials from './components/Testimonials/Testimonials'
 import AllProductSection from './components/AllProductSection/AllProductSection'
+import CheckoutPage from './components/Checkout/CheckoutPage'
+import Payment from './components/Payment/Payment'
+import PaymentSuccess from './components/PaymentSuccess/PaymentSuccess'
+import PaymentFail from './components/PaymentFail/PaymentFail'
+import PaymentCancel from './components/PaymentCancel/PaymentCancel'
 
 const router=createBrowserRouter([
   {
@@ -39,6 +43,26 @@ const router=createBrowserRouter([
       {
         path:"all_product",
         element:<AllProductSection/>
+      },
+      {
+        path:"checkout",
+        element:<CheckoutPage/>
+      },
+      {
+        path:"payment",
+        element:<Payment/>
+      },
+      {
+        path:"payment_success",
+        element:<PaymentSuccess/>
+      },
+      {
+        path:"payment_failed",
+        element:<PaymentFail/>
+      },
+      {
+        path:"payment_cancel",
+        element:<PaymentCancel/>
       }
       ,
       {

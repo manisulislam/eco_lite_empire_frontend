@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from 'react-redux';
@@ -17,6 +17,7 @@ const ProductDetail = () => {
     const [error, setError] = useState(null);
 
     const dispatch= useDispatch()
+    const navigate= useNavigate()
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/products/${id}/`)
             .then(res => {
@@ -46,6 +47,11 @@ const ProductDetail = () => {
 
     }
 
+    const handleBuyNow = (product) => {
+        navigate('/checkout', { state: { product } });
+    }
+
+
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
         <div className="flex">
@@ -70,7 +76,9 @@ const ProductDetail = () => {
                         className="w-16 p-2 border rounded-lg"
                     />
                     <button onClick={()=> handleAddToCart(product)} className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Add to Cart</button>
-                    <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">Buy Now</button>
+                    <button onClick={() => handleBuyNow(product)} className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">Buy Now</button>
+                    
+                    
                 </div>
             </div>
         </div>
