@@ -1,8 +1,10 @@
 import  { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,7 +37,10 @@ const Payment = () => {
       }
     } else {
       console.log('Payment method:', paymentMethod);
+      navigate("/order")
+      
     }
+
   };
 
   return (

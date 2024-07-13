@@ -32,6 +32,7 @@ import PaymentFail from './components/PaymentFail/PaymentFail'
 import PaymentCancel from './components/PaymentCancel/PaymentCancel'
 import OrderHistory from './components/Dashboard/OrderHistory'
 import MyReview from './components/Dashboard/MyReview'
+import Order from './components/Order/Order'
 
 const router=createBrowserRouter([
   {
@@ -117,6 +118,10 @@ const router=createBrowserRouter([
         element:<Testimonials/>
       }
       ,
+      {
+        path:"order",
+        element:<Order/>
+      },
       {
         path:"*",
         element:<NotFound/>

@@ -2,10 +2,13 @@
 import { useState } from 'react';
 import { Link, useLocation,useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addShippingAddress } from '../../features/shipping/shippingSlice';
 
 const CheckoutPage = () => {
   const location = useLocation();
   const navigate=useNavigate()
+  const dispatch=useDispatch()
   const product = location.state?.product;
   
  
@@ -33,6 +36,8 @@ const CheckoutPage = () => {
     axios.post('http://127.0.0.1:8000/api/sslcommerz/shipping/', formData)
     .then(response => {
         console.log('Shipping Info submitted', response.data);
+        dispatch(addShippingAddress(formData))
+        // Redirect to the payment page
         navigate('/payment')
         
        
